@@ -1,4 +1,5 @@
 import React from 'react';
+import { ArterburnAd } from './AdBanner';
 
 function ResultsSection({ result }) {
   const { animal, confidence, reasoning, alternates, animalDetails, fromLibrary } = result;
@@ -110,6 +111,9 @@ function ResultsSection({ result }) {
           </div>
         )}
       </div>
+      
+      {/* Arterburn Outdoors Ad */}
+      <ArterburnAd />
     </div>
   );
 }

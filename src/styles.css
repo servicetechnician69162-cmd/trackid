@@ -757,3 +757,225 @@ h4 { font-size: 1.1rem; }
     border-right: 1px solid var(--color-pine);
   }
 }
+
+/* ============================================
+   AD BANNER STYLES
+   ============================================ */
+
+.ad-banner {
+  background: linear-gradient(135deg, #f5f0e8 0%, #ebe4d6 100%);
+  border: 2px solid var(--color-forest);
+  border-radius: var(--radius-lg);
+  margin: var(--space-lg) 0;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ad-banner:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(45, 80, 22, 0.2);
+}
+
+.ad-label {
+  background: var(--color-forest);
+  color: var(--color-cream);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 0.25rem 0.75rem;
+  display: inline-block;
+}
+
+.ad-content {
+  padding: var(--space-md);
+}
+
+.ad-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.ad-logo {
+  width: 50px;
+  height: 50px;
+  background: var(--color-cream);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--color-forest);
+}
+
+.ad-logo-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.ad-title h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--color-forest);
+  margin: 0;
+  letter-spacing: 0.05em;
+}
+
+.ad-tagline {
+  font-size: 0.8rem;
+  color: var(--color-mud);
+  margin: 0.25rem 0 0 0;
+  font-style: italic;
+}
+
+.ad-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.ad-image-placeholder {
+  background: #1a1a2e;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  aspect-ratio: 2/1;
+}
+
+.ad-image-content {
+  width: 100%;
+  height: 100%;
+}
+
+.camp-scene {
+  width: 100%;
+  height: 100%;
+}
+
+.ad-description {
+  font-size: 0.85rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+.ad-description p {
+  margin: 0 0 0.5rem 0;
+}
+
+.ad-features {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 0 0;
+  font-size: 0.8rem;
+}
+
+.ad-features li {
+  margin: 0.35rem 0;
+  color: var(--color-forest);
+}
+
+.ad-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(45, 80, 22, 0.2);
+}
+
+.ad-location {
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.ad-cta-button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.ad-cta-button:hover {
+  background: var(--accent-hover);
+}
+
+/* Compact Ad Variant */
+.ad-banner.compact {
+  padding: 0;
+}
+
+.ad-content-compact {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+}
+
+.ad-logo-small {
+  width: 36px;
+  height: 36px;
+  background: var(--color-forest);
+  color: var(--color-cream);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.ad-text-compact {
+  flex: 1;
+  min-width: 0;
+}
+
+.ad-text-compact strong {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--color-forest);
+}
+
+.ad-text-compact span {
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.ad-cta-small {
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Generic Ad Slots (for AdSense or other networks) */
+.ad-slot {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px dashed var(--color-sage);
+  border-radius: var(--radius-md);
+  margin: var(--space-lg) 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ad-slot-banner {
+  height: 90px;
+}
+
+.ad-slot-rectangle {
+  height: 250px;
+}
+
+.ad-slot-placeholder {
+  color: var(--color-stone);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}

@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
+import { ArterburnAd } from './AdBanner';
 
-const CATEGORIES = ['All', 'Ungulate', 'Bear', 'Cat', 'Canine', 'Mammal', 'Rodent', 'Mustelid', 'Bird', 'Marsupial'];
+const CATEGORIES = ['All', 'Big Game', 'Small Game', 'Predator', 'Fur-bearer', 'Domestic', 'Rodent', 'Bird'];
 
 function LibrarySection({ animals, onAnimalClick }) {
   const [search, setSearch] = useState('');
@@ -50,26 +51,27 @@ function LibrarySection({ animals, onAnimalClick }) {
       </div>
       
       <div className="library">
-        {filteredAnimals.map((animal) => (
-          <div 
-            key={animal.name}
-            className="library-card"
-            onClick={() => onAnimalClick(animal)}
-          >
-            <img 
-              src={animal.image} 
-              alt={animal.name}
-              className="library-image"
-              loading="lazy"
-              onError={(e) => {
-                e.target.src = 'https://via.placeholder.com/200x100?text=No+Image';
-              }}
-            />
-            <div className="library-info">
-              <div className="library-name">{animal.name}</div>
-              <div className="library-category">{animal.category}</div>
+        {filteredAnimals.map((animal, index) => (
+          <React.Fragment key={animal.name}>
+            <div 
+              className="library-card"
+              onClick={() => onAnimalClick(animal)}
+            >
+              <img 
+                src={animal.image} 
+                alt={animal.name}
+                className="library-image"
+                loading="lazy"
+                onError={(e) => {
+                  e.target.src = 'https://via.placeholder.com/200x100?text=No+Image';
+                }}
+              />
+              <div className="library-info">
+                <div className="library-name">{animal.name}</div>
+                <div className="library-category">{animal.category}</div>
+              </div>
             </div>
-          </div>
+          </React.Fragment>
         ))}
       </div>
       
@@ -77,6 +79,11 @@ function LibrarySection({ animals, onAnimalClick }) {
         <div style={{ textAlign: 'center', padding: '2rem', color: 'var(--text-secondary)' }}>
           No animals found matching your search.
         </div>
+      )}
+      
+      {/* Compact Ad at bottom of library */}
+      {filteredAnimals.length > 0 && (
+        <ArterburnAd variant="compact" />
       )}
     </div>
   );

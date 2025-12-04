@@ -1,4 +1,5 @@
 import React from 'react';
+import { ArterburnAd } from './AdBanner';
 
 function HistorySection({ history, onItemClick, onClear, fullView = false }) {
   const formatDate = (timestamp) => {
@@ -20,6 +21,9 @@ function HistorySection({ history, onItemClick, onClear, fullView = false }) {
       }}>
         <div style={{ fontSize: '3rem', marginBottom: '1rem', opacity: 0.5 }}>📜</div>
         <p>No scans yet. Take a photo of an animal track to get started!</p>
+        
+        {/* Show ad even when empty */}
+        <ArterburnAd variant="compact" />
       </div>
     );
   }
@@ -81,6 +85,9 @@ function HistorySection({ history, onItemClick, onClear, fullView = false }) {
             </div>
           ))}
         </div>
+        
+        {/* Compact ad at bottom of history */}
+        <ArterburnAd variant="compact" />
       </div>
     );
   }
