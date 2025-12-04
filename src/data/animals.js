@@ -304,7 +304,7 @@ export const animals = {
   "wild turkey": {
     name: "Wild Turkey",
     scientificName: "Meleagris gallopavo",
-    category: "Big Game",
+    category: "Bird",
     description: "Large ground-dwelling bird and ancestor of domestic turkey. Males display impressive tail fans.",
     habitat: "Hardwood and mixed forests with clearings, also farmland edges.",
     range: "Throughout most of the United States and parts of Mexico. Reintroduced successfully after near extinction.",
@@ -739,7 +739,7 @@ export const animals = {
   "armadillo": {
     name: "Nine-banded Armadillo",
     scientificName: "Dasypus novemcinctus",
-    category: "Fur-bearer",
+    category: "Small Game",
     description: "Only armadillo species in the US. Has armored shell and always gives birth to identical quadruplets.",
     habitat: "Forests, scrublands, and grasslands with loose soil for digging.",
     range: "South-central and southeastern United States. Range expanding northward.",
@@ -974,6 +974,84 @@ export const animals = {
     trackDescription: "Webbed prints 3-4 inches with three forward toes connected by webbing. Waddle pattern with inward-pointing toes.",
     behavior: "Mate for life. Highly territorial during nesting. V-formation flying for efficiency.",
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Canada_goose_on_Seedskadee_National_Wildlife_Refuge_%2827826185489%29.jpg/640px-Canada_goose_on_Seedskadee_National_Wildlife_Refuge_%2827826185489%29.jpg"
+  },
+
+  "mallard duck": {
+    name: "Mallard Duck",
+    scientificName: "Anas platyrhynchos",
+    category: "Bird",
+    description: "The most common and recognizable duck in North America. Males have distinctive iridescent green heads.",
+    habitat: "Ponds, lakes, marshes, rivers, and urban parks with water features.",
+    range: "Throughout North America. Year-round in much of the US, breeding further north.",
+    diet: "Omnivore - aquatic plants, seeds, insects, snails, and occasionally small fish.",
+    trackDescription: "Webbed prints 2-3 inches with three forward toes. Smaller than goose tracks. Waddle pattern.",
+    behavior: "Dabbling duck that tips forward to feed. Very adaptable to human presence. Ancestor of most domestic ducks.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Anas_platyrhynchos_male_female_quadrat.jpg/640px-Anas_platyrhynchos_male_female_quadrat.jpg"
+  },
+
+  "wood duck": {
+    name: "Wood Duck",
+    scientificName: "Aix sponsa",
+    category: "Bird",
+    description: "Stunningly colorful duck considered one of the most beautiful waterfowl in North America.",
+    habitat: "Wooded swamps, marshes, streams, and ponds near forests. Nests in tree cavities.",
+    range: "Eastern North America and Pacific coast. Migratory in northern ranges.",
+    diet: "Omnivore - acorns, seeds, berries, insects, and aquatic invertebrates.",
+    trackDescription: "Webbed prints 2-2.5 inches with three forward toes. Often found near wooded water edges.",
+    behavior: "Perches in trees unlike most ducks. Ducklings jump from nest cavities up to 50 feet high.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Wood_Duck_%28Aix_sponsa%29%2C_Parc_du_Rouge-Clo%C3%AEtre%2C_Brussels.jpg/640px-Wood_Duck_%28Aix_sponsa%29%2C_Parc_du_Rouge-Clo%C3%AEtre%2C_Brussels.jpg"
+  },
+
+  "bald eagle": {
+    name: "Bald Eagle",
+    scientificName: "Haliaeetus leucocephalus",
+    category: "Bird",
+    description: "The national bird of the United States. Majestic raptor with distinctive white head and tail in adults.",
+    habitat: "Near large bodies of water - coastlines, rivers, lakes, and reservoirs with tall trees for nesting.",
+    range: "Throughout North America from Alaska to Mexico. Recovered dramatically after DDT ban.",
+    diet: "Carnivore - primarily fish, but also waterfowl, small mammals, and carrion.",
+    trackDescription: "Large raptor tracks 5-6 inches with three forward toes and one rear toe. Long curved talons visible. Rarely seen on ground.",
+    behavior: "Mate for life. Build massive nests up to 10 feet wide. Soar on thermals. Steal food from ospreys.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/About_to_Launch_%2826075320352%29.jpg/640px-About_to_Launch_%2826075320352%29.jpg"
+  },
+
+  "golden eagle": {
+    name: "Golden Eagle",
+    scientificName: "Aquila chrysaetos",
+    category: "Bird",
+    description: "Powerful raptor of open country. Larger and more aggressive hunter than bald eagle.",
+    habitat: "Mountains, canyons, rimrock, and open grasslands. Avoids heavily forested areas.",
+    range: "Western North America, Alaska, and scattered eastern locations. Also found across Northern Hemisphere.",
+    diet: "Carnivore - rabbits, ground squirrels, prairie dogs, and occasionally larger prey like young deer.",
+    trackDescription: "Large raptor tracks 5-6 inches with powerful talons. Three forward toes, one rear. Very rarely walks on ground.",
+    behavior: "Hunt by soaring and diving at speeds up to 150 mph. Pairs often hunt cooperatively.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Golden_eagle_in_flight_-_5.jpg/640px-Golden_eagle_in_flight_-_5.jpg"
+  },
+
+  "red-tailed hawk": {
+    name: "Red-tailed Hawk",
+    scientificName: "Buteo jamaicensis",
+    category: "Bird",
+    description: "The most common hawk in North America. Named for the rusty-red tail of adults.",
+    habitat: "Open country, prairies, deserts, woodlands, and increasingly urban areas.",
+    range: "Throughout North America from Alaska to Panama. Year-round in most of US.",
+    diet: "Carnivore - primarily rodents, also rabbits, snakes, and other small animals.",
+    trackDescription: "Medium raptor tracks 3-4 inches with three forward toes and one rear. Curved talons visible.",
+    behavior: "Often seen perched on telephone poles scanning for prey. Distinctive raspy scream used in movies for other raptors.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Buteo_jamaicensis_-_Rood_Valley%2C_New_Mexico%2C_USA-8.jpg/640px-Buteo_jamaicensis_-_Rood_Valley%2C_New_Mexico%2C_USA-8.jpg"
+  },
+
+  "great horned owl": {
+    name: "Great Horned Owl",
+    scientificName: "Bubo virginianus",
+    category: "Bird",
+    description: "The most widespread owl in the Americas. Powerful nocturnal predator with distinctive ear tufts.",
+    habitat: "Extremely adaptable - forests, deserts, swamps, suburbs, and cities.",
+    range: "Throughout North and South America from Arctic to Tierra del Fuego.",
+    diet: "Carnivore - rabbits, skunks, geese, and other owls. Will take prey larger than itself.",
+    trackDescription: "Raptor tracks 3-4 inches with two forward toes and two rear toes (zygodactyl). Strong curved talons. Rarely seen.",
+    behavior: "Primarily nocturnal. Deep hooting call. Fierce defender of nest. One of few predators of skunks.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Bubo_virginianus_06.jpg/640px-Bubo_virginianus_06.jpg"
   },
 
   // ==================== WILD BOAR ====================
