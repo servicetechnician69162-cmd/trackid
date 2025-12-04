@@ -56,26 +56,116 @@ export default async (request, context) => {
       ? `The user is located in ${location.region || 'North America'}${location.state ? `, ${location.state}` : ''}.`
       : 'The user is located somewhere in North America.';
 
-    const prompt = `You are an expert wildlife tracker and animal track identifier. Analyze this image of an animal track and identify what animal made it.
+    const prompt = `You are a master wildlife tracker with decades of field experience identifying animal tracks across North America. You have studied under expert trackers and have extensive knowledge of track morphology, gait patterns, and regional wildlife.
 
+LOCATION CONTEXT:
 ${locationContext}
 
-Please respond with a JSON object containing:
-1. "animal": The common name of the animal (lowercase, e.g., "white-tailed deer", "coyote", "raccoon")
-2. "confidence": A number from 0-100 representing your confidence in this identification
-3. "reasoning": A brief explanation of why you identified this track (key features you noticed)
-4. "alternates": An array of 1-2 other possible animals this could be, each with name and confidence
+SYSTEMATIC TRACK ANALYSIS - Follow this protocol:
 
-Consider these factors:
-- Track shape and size
-- Number of toes visible
-- Presence or absence of claw marks
-- Overall pattern and gait if multiple tracks visible
-- The geographic location provided
+**STEP 1: BASIC MORPHOLOGY**
+- Overall track shape: Round? Oval? Heart-shaped? Asymmetrical?
+- Estimated size: Measure mentally against common objects if possible
+- Track symmetry: Symmetrical (cats, dogs) or asymmetrical (mustelids)?
 
-If the image is not a clear animal track or you cannot identify it, set confidence below 30 and explain why.
+**STEP 2: TOE ANALYSIS**
+- Count visible toes: 2 toes (ungulates), 4 toes (canines/felines), 5 toes (bears/mustelids/raccoons)
+- Toe arrangement: Are toes in a line, arc, or circular pattern?
+- Toe shape: Round, oval, or teardrop-shaped?
+- Note: Cats and dogs show 4 toes; the 5th toe (dewclaw) is higher and rarely registers
 
-Respond ONLY with valid JSON, no other text.`;
+**STEP 3: CLAW MARKS**
+- Present or absent? This is CRITICAL:
+  - Cats (bobcat, mountain lion, house cat) = NO claw marks (retractable)
+  - Dogs (coyote, wolf, fox, domestic dog) = Claw marks visible
+  - Bears = Long claw marks extending beyond toes
+- Claw shape: Pointed, blunt, or curved?
+
+**STEP 4: PAD ANALYSIS**
+- Heel/palm pad shape:
+  - Canines: Triangular or chevron-shaped
+  - Felines: Three-lobed (M-shaped) rear edge
+  - Bears: Wide, flat pad
+  - Raccoon: Looks like small human hand
+- Size ratio of heel pad to toes
+
+**STEP 5: GAIT PATTERN (if multiple tracks visible)**
+- Direct register (rear foot in front track) = cats, foxes
+- Diagonal walk, trot, bound, or gallop?
+- Straddle (trail width) and stride length
+
+**STEP 6: CONTEXTUAL CLUES**
+- Substrate: mud, snow, sand, dust affects track clarity
+- Habitat visible: forest floor, streambank, trail
+- Associated sign: scat, feeding sign, drag marks
+
+**KEY DISTINGUISHING FEATURES:**
+
+DEER FAMILY (2 toes, heart-shaped):
+- White-tailed deer: 2-3" long, pointed tips, dewclaws in deep substrate
+- Mule deer: Slightly larger 2.5-3.5", similar to whitetail
+- Elk: 3.5-4.5", more rounded than deer
+- Moose: 5-7", very large, splayed in soft ground
+
+CANINES (4 toes, oval, claws visible, triangular pad):
+- Coyote: 2-2.5", neat oval, straight line trail
+- Wolf: 4-5", much larger, X pattern between toes and pad
+- Red fox: 1.75-2.5", very neat, fur may blur edges
+- Domestic dog: Variable 1.5-4", messy trail pattern, splayed toes
+
+FELINES (4 toes, round, NO claws, 3-lobed pad):
+- Bobcat: 1.5-2.5", asymmetrical with one leading toe
+- Mountain lion: 3-4", large round, obvious 3-lobed heel
+- Domestic cat: 1-1.5", small version of bobcat
+
+BEARS (5 toes, large):
+- Black bear: Front 4-5", hind 6-7" human-like, claws 1-1.5"
+- Grizzly: Front 5-6" wide, claws 2-4" extending well past toes
+
+MUSTELIDS (5 toes, often only 4 visible):
+- Raccoon: Hand-like, 2-4", very distinctive fingers
+- Opossum: Star-shaped hind with opposable thumb
+- Skunk: 1-2", long front claws
+- Badger: 2-2.5" wide, very long front claws
+
+RABBITS/HARES:
+- Cottontail: Y-pattern, large hind 3-4" ahead of small round front 1"
+- Jackrabbit: Very large hind 4-5", bounding pattern
+- Snowshoe hare: Huge splayed hind feet 4-5"
+
+RODENTS:
+- Squirrel: Bounding pattern, hind 2" ahead of front 1"
+- Beaver: Hind 5-6" webbed, tail drag often visible
+- Muskrat: Hind 2-3", tail drag
+
+BIRDS:
+- Turkey: 4-5" long, 3 forward toes, 1 small rear
+- Goose/Duck: Webbed, 3 forward toes
+
+RESPOND WITH THIS EXACT JSON FORMAT:
+{
+  "animal": "common name in lowercase matching our database (e.g., 'white-tailed deer', 'coyote', 'bobcat')",
+  "confidence": <0-100 integer>,
+  "reasoning": "Detailed explanation citing specific features observed: track shape, toe count, claw presence, pad shape, estimated size, gait pattern if visible",
+  "alternates": [
+    {"name": "second possibility", "confidence": <0-100>},
+    {"name": "third possibility", "confidence": <0-100>}
+  ]
+}
+
+CONFIDENCE GUIDELINES:
+- 80-100%: Clear track with multiple diagnostic features visible
+- 60-79%: Good track but some features unclear or ambiguous
+- 40-59%: Partial track or conflicting features
+- 20-39%: Poor quality image, very weathered track, or uncertain
+- 0-19%: Cannot identify or not actually an animal track
+
+If the image does NOT show an animal track (shows something else entirely, or is too blurry/unclear to analyze), set confidence below 20 and explain what you see instead.
+
+IMPORTANT: Match animal names to common database entries like: "white-tailed deer", "mule deer", "black bear", "grizzly bear", "coyote", "gray wolf", "red fox", "bobcat", "mountain lion", "raccoon", "elk", "moose", "wild turkey", "cottontail rabbit", etc.
+
+Respond ONLY with the JSON object. No additional text before or after.`;
+
 
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
@@ -86,7 +176,7 @@ Respond ONLY with valid JSON, no other text.`;
       },
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
-        max_tokens: 1024,
+        max_tokens: 2048,
         messages: [
           {
             role: 'user',
