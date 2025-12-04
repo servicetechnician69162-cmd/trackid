@@ -102,4 +102,3 @@ Update colors in `src/styles.css` under the `:root` CSS variables.
 ---
 
 Built with ❤️ for the outdoors
-"# animaltracks" 
